@@ -46,13 +46,13 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/item_rv_main_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="item_rv_main_category"
-                android:id="@+id/item_rv_main_category"/>
+                android:id="@+id/item_rv_main_category" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -64,6 +64,7 @@
                 android:paddingStart="@dimen/_10sdp"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/item_rv_sub_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"

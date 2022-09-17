@@ -31,7 +31,7 @@
             android:paddingStart="@dimen/_20sdp"
             android:paddingEnd="@dimen/_20sdp"
             android:background="@drawable/btn_bg"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:text="Get Started"/>
 
         <ProgressBar
