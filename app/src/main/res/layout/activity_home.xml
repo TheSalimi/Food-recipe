@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context=".SplashActivity">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,44 +34,48 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp" >
-                <androidx.appcompat.widget.SearchView
+                app:cardElevation="@dimen/_10sdp">
+
+
+                <SearchView
+                    android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/search_bg"
-                    app:iconifiedByDefault="false"
-                    app:queryBackground="@color/transparent"
-                    app:queryHint="Search for receipes"
-                    android:theme="@style/ThemeOverlay.Search"/>
+                    android:iconifiedByDefault="false"
+                    android:queryBackground="@color/transparent"
+                    android:queryHint="Search for recipes"
+                    android:theme="@style/ThemeOverlay.Search" />
+
             </androidx.cardview.widget.CardView>
 
-
             <androidx.recyclerview.widget.RecyclerView
-                tools:listitem="@layout/item_rv_main_category"
+                android:id="@+id/rv_main_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:orientation="horizontal"
-                tools:itemCount="1"
-                android:id="@+id/item_rv_main_category" />
+                tools:listitem="@layout/item_rv_main_category" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo_da"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
+                android:paddingStart="@dimen/_10sdp"
                 android:text="Category name"
-                android:paddingStart="@dimen/_10sdp"/>
+                android:id="@+id/tvCategory"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                tools:listitem="@layout/item_rv_sub_category"
+                android:id="@+id/rv_sub_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:orientation="horizontal"
-                tools:itemCount="1"
-                android:id="@+id/rv_sub_category"/>
+                tools:listitem="@layout/item_rv_sub_category" />
+
+
         </LinearLayout>
     </ScrollView>
 

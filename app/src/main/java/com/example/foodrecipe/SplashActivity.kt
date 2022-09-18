@@ -1,9 +1,11 @@
 package com.example.foodrecipe
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,9 +13,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         btnGetStarted.setOnClickListener(){
-            var intent =  Intent(this@SplashActivity  , HomeActivity::class.java)
+            val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
+
+
 }

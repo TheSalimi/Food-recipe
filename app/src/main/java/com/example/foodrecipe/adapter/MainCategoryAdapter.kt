@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodrecipe.R
 import com.example.foodrecipe.entities.Recipes
-import kotlinx.android.synthetic.main.item_rv_sub_category.view.*
+import kotlinx.android.synthetic.main.item_rv_main_category.view.*
 
 class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewHolder>() {
+
     var arrMainCategory = ArrayList<Recipes>()
     fun setData(arrData: List<Recipes>) {
         arrMainCategory =
-            arrData as ArrayList<Recipes> /* = java.util.ArrayList<com.example.foodrecipe.entities.Recipes> */
+            arrData as ArrayList<Recipes>
     }
 
     class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,7 +27,7 @@ class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewH
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.itemView.tv_dish_name.text = arrMainCategory[position].dishName
+        holder.itemView.tv_main_name.text = arrMainCategory[position].dishName
     }
 
     override fun getItemCount(): Int {
