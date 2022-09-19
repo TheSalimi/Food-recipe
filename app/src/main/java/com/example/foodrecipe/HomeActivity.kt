@@ -8,7 +8,7 @@ import com.example.foodrecipe.adapter.SubCategoryAdapter
 import com.example.foodrecipe.entities.Recipes
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     private var arrMainCategory = ArrayList<Recipes>()
     private var arrSubCategory = ArrayList<Recipes>()
 
