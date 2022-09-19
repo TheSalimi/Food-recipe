@@ -5,14 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodrecipe.R
+import com.example.foodrecipe.entities.CategoryItems
 import com.example.foodrecipe.entities.Recipes
 import kotlinx.android.synthetic.main.item_rv_sub_category.view.*
 
 class SubCategoryAdapter : RecyclerView.Adapter<SubCategoryAdapter.RecipeViewHolder>() {
-    var arrSubCategory = ArrayList<Recipes>()
-    fun setData(arrData: List<Recipes>) {
+    var arrSubCategory = ArrayList<CategoryItems >()
+    fun setData(arrData: List<CategoryItems>) {
         arrSubCategory =
-            arrData as ArrayList<Recipes> /* = java.util.ArrayList<com.example.foodrecipe.entities.Recipes> */
+            arrData as ArrayList<CategoryItems>
     }
 
     class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
