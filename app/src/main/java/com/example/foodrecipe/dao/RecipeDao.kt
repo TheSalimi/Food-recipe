@@ -7,18 +7,18 @@ import com.example.foodrecipe.entities.MealsItems
 
 @Dao
 interface RecipeDao {
-    @get:Query("SELECT * FROM category ORDER BY id DESC")
-    val getAllCategory: List<CategoryItems>
+    @Query("SELECT * FROM categoryitems ORDER BY id DESC")
+    suspend fun getAllCategory() : List<CategoryItems>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCategory(categoryItems : CategoryItems)
+    suspend fun insertCategory(categoryItems: CategoryItems?)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMeal(mealItems : MealsItems)
+    suspend fun insertMeal(mealsItems: MealsItems?)
 
-    @Query("DELETE FROM CategoryItems")
-    fun clearDb()
+    @Query("DELETE FROM categoryitems")
+    suspend fun clearDb()
 
     @Query("SELECT * FROM MealItems WHERE categoryName = :categoryName ORDER BY id DESC")
-    fun getSpecificMealList(categoryName:String): List<MealsItems>
+    suspend fun getSpecificMealList(categoryName:String) : List<MealsItems>
 }
