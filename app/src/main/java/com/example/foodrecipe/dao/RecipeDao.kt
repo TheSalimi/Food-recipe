@@ -18,4 +18,7 @@ interface RecipeDao {
 
     @Query("DELETE FROM CategoryItems")
     fun clearDb()
+
+    @Query("SELECT * FROM MealItems WHERE categoryName = :categoryName ORDER BY id DESC")
+    fun getSpecificMealList(categoryName:String): List<CategoryItems>
 }

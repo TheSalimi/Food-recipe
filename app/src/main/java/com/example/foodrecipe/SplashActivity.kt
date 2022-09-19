@@ -2,12 +2,14 @@ package com.example.foodrecipe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.foodrecipe.database.RecipeDatabase
 import com.example.foodrecipe.entities.Category
 import com.example.foodrecipe.entities.Meal
+import com.example.foodrecipe.entities.MealsItems
 import com.example.foodrecipe.interfaces.GetDataService
 import com.example.foodrecipe.retrofitclient.RetrofitClientInstance
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -22,7 +24,7 @@ import javax.security.auth.callback.Callback
 class SplashActivity : BaseActivity(), EasyPermissions.RationaleCallbacks,
     EasyPermissions.PermissionCallbacks {
     private var READ_STORAGE_PERM = 123
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -30,6 +32,7 @@ class SplashActivity : BaseActivity(), EasyPermissions.RationaleCallbacks,
         btnGetStarted.setOnClickListener() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -60,7 +63,7 @@ class SplashActivity : BaseActivity(), EasyPermissions.RationaleCallbacks,
                 call: Call<Meal>,
                 response: Response<Meal>
             ) {
-                insertMealDataIntoRoomDb(response.body())
+                insertMealDataIntoRoomDb(categoryName, response.body())
             }
 
             override fun onFailure(call: Call<Meal>, t: Throwable) {
@@ -122,12 +125,20 @@ class SplashActivity : BaseActivity(), EasyPermissions.RationaleCallbacks,
         }
     }
 
-    private fun insertMealDataIntoRoomDb(meal: Meal?) {
+    private fun insertMealDataIntoRoomDb(categoryName: String,meal: Meal?) {
         launch {
             this.let {
                 for (arr in meal!!.mealsItem!!) {
+                    var mealItemModel = MealsItems(
+                        arr.id,
+                        arr.idMeal,
+                        categoryName,
+                        arr.strMeal,
+                        arr.strMealThumb
+                    )
                     RecipeDatabase.getDatabase(this@SplashActivity)
                         .recipeDao().insertMeal(arr)
+                    Log.d("mealData" , arr.toString())
                 }
             }
             btnGetStarted.visibility = View.VISIBLE
