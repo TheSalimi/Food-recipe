@@ -31,15 +31,15 @@
                 android:id="@+id/tv_main_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dish Name"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/white"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
-                android:maxLines="2"
-                android:maxEms="10"
+                android:layout_alignParentBottom="true"
                 android:fontFamily="@font/baloo_da"
-                android:padding="@dimen/_5sdp"/>
+                android:maxEms="10"
+                android:maxLines="2"
+                android:padding="@dimen/_5sdp"
+                android:text="Dish Name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11ssp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

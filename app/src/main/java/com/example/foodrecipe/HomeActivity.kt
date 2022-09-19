@@ -22,8 +22,14 @@ class HomeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-          rv_sub_category.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-          rv_sub_category.adapter = subCategoryAdapter
+          getDataFromDb()
+        mainCategoryAdapter.setClickListener(onClicked)
+    }
+
+    private val onClicked = object :MainCategoryAdapter.onItemClickListener{
+        override  fun onClicked(categoryName: String){
+            getMealDataFromDb(categoryName)
+        }
     }
 
     private fun getDataFromDb(){
@@ -32,6 +38,7 @@ class HomeActivity : BaseActivity() {
                 var category = RecipeDatabase.getDatabase(this@HomeActivity).recipeDao().getAllCategory
                 arrMainCategory = category as ArrayList<CategoryItems>
                 arrMainCategory.reverse()
+                getMealDataFromDb(arrMainCategory[0].strCategory)
                 mainCategoryAdapter.setData(arrMainCategory)
                 rv_main_category.layoutManager = LinearLayoutManager(this@HomeActivity,LinearLayoutManager.HORIZONTAL,false)
                 rv_main_category.adapter = mainCategoryAdapter
@@ -40,7 +47,8 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    private fun getDataFromDb(categoryName:String){
+    private fun getMealDataFromDb(categoryName:String){
+        tvCategory.text = categoryName +" category"
         launch{
             this.let {
                 var meals = RecipeDatabase.getDatabase(this@HomeActivity).recipeDao().getSpecificMealList(categoryName)

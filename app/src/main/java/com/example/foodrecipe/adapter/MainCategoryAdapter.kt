@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.item_rv_main_category.view.*
 
 class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewHolder>() {
     var ctx:Context?=null
+    var listener : onItemClickListener?=null
+
     var arrMainCategory = ArrayList<CategoryItems>()
     fun setData(arrData: List<CategoryItems>) {
         arrMainCategory =
@@ -33,9 +35,22 @@ class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewH
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.itemView.tv_main_name.text = arrMainCategory[position].strCategory
         Glide.with(ctx!!).load(arrMainCategory[position].strCategoryThumb).into(holder.itemView.img_dish)
+        holder.itemView.rootView.setOnClickListener{
+            listener!!.onClicked(arrMainCategory[position].strCategory)
+        }
     }
 
     override fun getItemCount(): Int {
         return arrMainCategory.size
+    }
+
+    fun setClickListener(listener1 : onItemClickListener){
+        listener = listener1
+    }
+
+    interface onItemClickListener{
+        fun onClicked(categoryName : String){
+
+        }
     }
 }
