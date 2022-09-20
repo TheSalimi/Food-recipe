@@ -10,12 +10,14 @@ import com.example.foodrecipe.R
 import com.example.foodrecipe.entities.CategoryItems
 import com.example.foodrecipe.entities.Recipes
 import kotlinx.android.synthetic.main.item_rv_main_category.view.*
+import kotlinx.android.synthetic.main.item_rv_main_category.view.img_dish
+import kotlinx.android.synthetic.main.item_rv_sub_category.view.*
 
 class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewHolder>() {
     var ctx:Context?=null
-    var listener : onItemClickListener?=null
-
+    var listener : OnItemClickListener?=null
     var arrMainCategory = ArrayList<CategoryItems>()
+
     fun setData(arrData: List<CategoryItems>) {
         arrMainCategory =
             arrData as ArrayList<CategoryItems>
@@ -33,7 +35,7 @@ class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewH
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.itemView.tv_main_name.text = arrMainCategory[position].strCategory
+        holder.itemView.tv_dish_name.text = arrMainCategory[position].strCategory
         Glide.with(ctx!!).load(arrMainCategory[position].strCategoryThumb).into(holder.itemView.img_dish)
         holder.itemView.rootView.setOnClickListener{
             listener!!.onClicked(arrMainCategory[position].strCategory)
@@ -44,13 +46,11 @@ class MainCategoryAdapter : RecyclerView.Adapter<MainCategoryAdapter.RecipeViewH
         return arrMainCategory.size
     }
 
-    fun setClickListener(listener1 : onItemClickListener){
+    fun setClickListener(listener1 : OnItemClickListener){
         listener = listener1
     }
 
-    interface onItemClickListener{
-        fun onClicked(categoryName : String){
-
-        }
+    interface OnItemClickListener{
+        fun onClicked(categoryName : String)
     }
 }

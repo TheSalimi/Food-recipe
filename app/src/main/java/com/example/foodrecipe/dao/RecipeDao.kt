@@ -7,7 +7,7 @@ import com.example.foodrecipe.entities.MealsItems
 
 @Dao
 interface RecipeDao {
-    @Query("SELECT * FROM categoryitems ORDER BY id DESC")
+    @Query("SELECT * FROM CategoryItems ORDER BY id DESC")
     suspend fun getAllCategory() : List<CategoryItems>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

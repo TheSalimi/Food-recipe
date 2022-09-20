@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.item_rv_sub_category.view.img_dish
 
 class SubCategoryAdapter : RecyclerView.Adapter<SubCategoryAdapter.RecipeViewHolder>() {
     var arrSubCategory = ArrayList<MealsItems>()
-    val ctx : Context?=null
+    var ctx : Context?=null
     fun setData(arrData: List<MealsItems>) {
         arrSubCategory =
             arrData as ArrayList<MealsItems>
@@ -27,6 +27,7 @@ class SubCategoryAdapter : RecyclerView.Adapter<SubCategoryAdapter.RecipeViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
+        ctx = parent.context
         return RecipeViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_rv_sub_category, parent, false))
