@@ -1,10 +1,15 @@
 # Food-recipe
 
 +kotlin
+
 +Meals API
+
 +Retrofit2
+
 +Room database
+
 +coroutines
+
 +modern design
 
 
