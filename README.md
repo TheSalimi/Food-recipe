@@ -1,17 +1,18 @@
 # Food-recipe
 
-##kotlin
+## Used technologies
 
-##Meals API
+###### Meals API
 
-##Retrofit2
+###### Retrofit2
 
-##Room database
+###### Room database
 
-##coroutines
+###### coroutines
 
-##modern design
+###### modern design
 
+video of app will be released later
 
 ![Screenshot (4)](https://user-images.githubusercontent.com/108394058/191504759-c471b797-b2a8-4327-ac32-db3bd249895a.png)
 ![Screenshot (5)](https://user-images.githubusercontent.com/108394058/191505044-703d51bb-5ee8-4720-8f3b-a4520944e205.png)
